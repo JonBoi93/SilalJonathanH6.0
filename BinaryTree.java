@@ -64,3 +64,17 @@ public class BinaryTree
 			printInorder(root);
 		}
 	}
+
+	/**
+		 * Recursive function to print out the Nodes in order
+		 * @param start Starting node to print
+		 */
+		private void printInorder(Node start) {
+			if(start!=null) {
+				//go down the left side of this node
+				printInorder(start.getLeft());
+				printNode(start);
+				//go down the right side of this node
+				printInorder(start.getRight());
+			}
+	}
