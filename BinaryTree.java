@@ -139,3 +139,31 @@ public class BinaryTree
 			} while (currentCompare != 0);
 			return true;
 	}
+
+	/**
+		 * Delete the node if it exists
+		 * @param data String data to delete
+		 * @return Deleted - true
+		 */
+		public boolean delete(String data) {
+			Node parent = root;
+			Node finder = root;
+			boolean contentsLesser = false;
+			int currentCompare = 0;
+			do {
+				currentCompare = finder.compareTo(data);
+				//System.out.println("'" + finder.getContents() + "'.compareTo('" + data + "') = " + currentCompare);
+				if (currentCompare != 0) {
+					parent = finder;
+					if(currentCompare > 0){
+						contentsLesser = true;
+						finder = finder.getLeft();
+					} else {
+						contentsLesser = false;
+						finder = finder.getRight();
+					}
+					if(finder == null){
+						return false;
+					}
+				}
+		} while (currentCompare != 0);
