@@ -167,3 +167,55 @@ public class BinaryTree
 					}
 				}
 		} while (currentCompare != 0);
+
+		//found the node
+				if (finder.getCount() <= 1) {
+					//delete the node
+					if (finder.getLeft() == null && finder.getRight() == null) {
+						//*Node has no children - simplest case
+						if(finder==root){
+							root = null;
+						}
+						if (contentsLesser ==true){
+							parent.setLeft(null);
+						} else {
+							parent.setRight(null);
+						}
+					} else if (finder.getRight() == null) {
+						//*Node has one child - easy case
+						if (finder==root) {
+							root = finder.getLeft();
+						} else if (contentsLesser) {
+							parent.setLeft(finder.getLeft());
+						} else {
+							parent.setRight(finder.getLeft());
+						}
+					} else if (finder.getLeft()==null) {
+						//*Node has one child - easy case
+						if (finder==root) {
+							root = finder.getRight();
+						} else if (contentsLesser) {
+							parent.setLeft(finder.getRight());
+						} else {
+							parent.setRight(finder.getRight());
+						}
+					} else if (finder.getLeft() != null && finder.getRight() != null) {
+						//*Node has two children - difficult case, need to find the successor Node
+						Node successor = getSuccessor(finder);
+						if (finder == root) {
+							root = successor;
+						} else if (contentsLesser) {
+							parent.setLeft(successor);
+						} else {
+							parent.setRight(successor);
+						}
+						successor.setLeft(finder.getLeft());
+					}
+				} else {
+					//decrease the count
+					finder.removeInstance();
+				}
+
+				return true;
+			}
+}
