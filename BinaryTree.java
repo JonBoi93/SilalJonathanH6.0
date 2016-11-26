@@ -52,3 +52,15 @@ public class BinaryTree
 		}
 	}
 
+/**
+	 * Print Nodes out in order from the most left bottom node
+	 */
+	public void print() {
+		if (root == null) {
+			System.out.println("Tree is empty");
+		} else {
+			System.out.print("Root is ");
+			printNode(root);
+			printInorder(root);
+		}
+	}
