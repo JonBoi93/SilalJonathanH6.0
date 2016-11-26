@@ -78,3 +78,64 @@ public class BinaryTree
 				printInorder(start.getRight());
 			}
 	}
+
+	/**
+		 * Print an individual Node
+		 * @param item Node item to print
+		 */
+		private void printNode(Node item) {
+			if (item != null) {
+				System.out.println(item.getContents() + " " + item.getCount());
+			}
+		}
+
+		/**
+		 * Get the successor node for the current delete tree
+		 * @param deleteNode Node to delete
+		 */
+		private Node getSuccessor(Node deleteNode){
+			Node finder = null;
+			Node parent = null;
+			Node current = deleteNode.getRight();
+
+			while (current != null) {
+				parent = finder;
+				finder = current;
+				current = current.getLeft();
+			}
+
+			if (finder != deleteNode.getRight()) {
+				parent.setLeft(finder.getRight());
+				finder.setRight(deleteNode.getRight());
+			}
+
+			return finder;
+		}
+
+		/**
+		 * Find if the string is in the tree
+		 * @param data Data to find
+		 * @return If the data was found or not
+		 */
+		public boolean search(String data) {
+			//essentially a copy of what delete does to find the node
+			Node parent = root;
+			Node finder = root;
+
+			int currentCompare = 0;
+			do {
+				currentCompare = finder.compareTo(data);
+				if (currentCompare != 0) {
+					parent = finder;
+					if(currentCompare > 0){
+						finder = finder.getLeft();
+					} else {
+						finder = finder.getRight();
+					}
+					if(finder == null){
+						return false;
+					}
+				}
+			} while (currentCompare != 0);
+			return true;
+	}
