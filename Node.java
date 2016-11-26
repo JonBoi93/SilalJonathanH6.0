@@ -90,3 +90,22 @@ public class Node {
     public void removeInstance() {
 		count--;
 	}
+
+ //Compare
+    /**
+     * Compare node contents by Node
+     * @param Comparison Node to compare with
+     */
+    public int compareTo(Node Comparison) {
+        return contents.compareTo(Comparison.getContents());
+    }
+
+	/**
+	 * Compare node contents by String
+	 * @param Comparison String to compare with
+	 */
+    public int compareTo(String Comparison) {
+        return contents.compareTo(Comparison);
+    }
+
+}
