@@ -31,8 +31,7 @@ public class SearchTreeTest {
 				}
 			}
 		};
-
-		//get a list of files with that filter
+	//get a list of files with that filter
 		File allfiles[] = f.listFiles(textFilter);
 		if (allfiles.length > 0) {
 			Scanner kybd = new Scanner(System.in);
@@ -58,4 +57,5 @@ public class SearchTreeTest {
 			System.out.println("Cannot find a .txt file in the current working directory");
 		}
 	}
+
 
