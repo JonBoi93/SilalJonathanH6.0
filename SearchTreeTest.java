@@ -58,4 +58,46 @@ public class SearchTreeTest {
 		}
 	}
 
+    /**
+     * Use regular expression to clean out all non-alphanumeric input
+     * @param input Input to clean
+     * @return cleaned from input
+     */
+    public static String CleanInput(String input) {
+        return input.replaceAll("[^A-Za-z0-9]","");
+    }
+
+	/**
+	 * Insert data from the file
+	 * @param filen File containing string data you would like to insert into the BinarySearchTree
+	 * @param bst BinarySearchTree that you would like to insert into
+	 */
+	private static void insertFromFile(File filen, BinaryTree bt) {
+		int words = 0;
+		int lines = 0;
+		Scanner sc2 = null;
+		try {
+			if (filen != null)
+				sc2 = new Scanner(filen);
+			else return;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		//read each line
+		while (sc2.hasNextLine()) {
+			Scanner s2 = new Scanner(sc2.nextLine());
+			//for each line, read each word
+			while (s2.hasNext()) {
+				String s = s2.next();
+				if (s.compareTo("") != 0) {
+					words++;
+					//insert a lower case version of the word
+					bt.insert(CleanInput(s.toLowerCase()));
+				}
+			}
+			lines++;
+		}
+		System.out.println("Inserted " + words + " words from " + lines + " lines");
+	}
+
 
