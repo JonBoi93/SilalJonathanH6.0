@@ -99,5 +99,27 @@ public class SearchTreeTest {
 		}
 		System.out.println("Inserted " + words + " words from " + lines + " lines");
 	}
+/**
+	 * Static test of the binary search tree - used before file input
+	 */
+	private static void testBT(BinaryTree bt) {
+		bt.insert("bart");
+		bt.insert("bart");
+		bt.insert("art");
+		bt.insert("lart");
+		bt.print();
+		System.out.println("Find bart " + bt.search("bart"));
+		bt.delete("bart");
+		System.out.println("Delete bart 1");
+		bt.print();
+		System.out.println("Delete bart 2");
+		bt.delete("bart");
+		System.out.println("Find bart " + bt.search("bart"));
+		bt.print();
+		bt.delete("art");
+		bt.delete("lart");
+		bt.print();
+	}
+}
 
 
